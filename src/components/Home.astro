@@ -1,0 +1,83 @@
+---
+import hero from "../assets/images/mobile-image-hero-1.jpg";
+import heroDesk from "../assets/images/desktop-image-hero-1.jpg";
+import aboutDark from "../assets/images/image-about-dark.jpg";
+import aboutLight from "../assets/images/image-about-light.jpg";
+---
+
+
+<main class="main">
+  <section id="hero" class="section">
+    <h1 class="sr-only"></h1>
+
+    <div class="swiper">
+      <picture>
+        <source media="(min-width: 375px)" srcset={heroDesk.src} sizes="" />
+        <img src={hero.src} alt="hero1" />
+      </picture>
+
+      <div class="swiper-buttons">
+        <button>[]</button>
+        <button>[]</button>
+      </div>
+    </div>
+
+    <div class="text">
+      <h2>Discover innovative ways to decorate</h2>
+      <p>
+        We provide unmatched quality, comfort, and style for property owners
+        across the country. Our experts combine form and function in bringing
+        your vision to life. Create a room in your own style with our collection
+        and make your property a reflection of you and what you love.
+      </p>
+      <a href="#!">Shop now</a>
+    </div>
+  </section>
+  <section id="about" class="section">
+    <picture>
+      <img src={aboutDark.src} alt="hero1" />
+    </picture>
+
+    <div class="text">
+      <h2>About our furniture</h2>
+      <p>
+        Our multifunctional collection blends design and function to suit your
+        individual taste. Make each room unique, or pick a cohesive theme that
+        best express your interests and what inspires you. Find the furniture
+        pieces you need, from traditional to contemporary styles or anything in
+        between. Product specialists are available to help you create your dream
+        space.
+      </p>
+    </div>
+
+    <picture>
+      <img src={aboutLight.src} alt="hero1" />
+    </picture>
+  </section>
+</main>
+
+<style>
+  .main {
+    display: grid;
+    /* justify-items: center; */
+  }
+
+  .section {
+    display: grid;
+  }
+
+  .swiper {
+    position: relative;
+  }
+
+  .swiper-buttons {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+
+  .text {
+    padding-inline: var(--content-offset);
+  }
+
+</style>
