@@ -1,5 +1,11 @@
 :root {
-  --content-offset: 1.5rem;
+  --color-bg: hsl(0, 100%, 100%);
+  --color-text: hsl(0, 0%, 0%);
+  --color-text-500: hsl(0, 0%, 63%);
+  --color-text-800: hsl(0, 0%, 27%);
+  --color-nav-link: hsl(0, 100%, 100%);
+
+  --content-offset: clamp(1.5rem, 6vw, 4rem);
 }
 
 body {
@@ -19,6 +25,10 @@ body {
     font-size: inherit;
     cursor: pointer;
   }
+
+  h2 {
+    margin-block: 0;
+  }
 }
 
 .sr-only {
@@ -31,4 +41,14 @@ body {
   width: 1px;
 }
 
-.wrapper {}
+.title {
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  letter-spacing: 6.2px;
+}
+
+.description {
+  line-height: 1.4;
+  letter-spacing: -0.2px;
+  color: var(--color-text-500);
+}

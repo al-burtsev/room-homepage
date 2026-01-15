@@ -11,32 +11,36 @@ import logo from "../assets/images/logo.svg";
         fill-rule="evenodd"></path></svg
     ></button
   >
-  <img src={logo.src} alt="Room's logo" />
-  <nav class="navigation">
-    <a href="#!">Home</a>
-    <a href="#!">Shop</a>
-    <a href="#!">About</a>
-    <a href="#!">Contact</a>
+  <img class="logo" src={logo.src} alt="Room's logo" />
+  <nav class="nav">
+    <a class="nav-link" href="#!">Home</a>
+    <a class="nav-link" href="#!">Shop</a>
+    <a class="nav-link" href="#!">About</a>
+    <a class="nav-link" href="#!">Contact</a>
   </nav>
 </header>
 
 <style>
   .header {
     position: absolute;
-    top: 2.75rem;
+    top: clamp(2.75rem, 6vw, 3.75rem);
     z-index: 10;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-inline: var(--content-offset);
+    padding-inline-start: var(--content-offset);
   }
 
-  .navigation {
+  .burger {
+    color: var(--color-nav-link);
+  }
+
+  .nav {
     display: none;
   }
 
-  @media (min-width: 768px) {
+  @media (width > 768px) {
     .header {
       width: fit-content;
     }
@@ -44,9 +48,20 @@ import logo from "../assets/images/logo.svg";
     .burger {
       display: none;
     }
+    .logo {
+      padding-inline-end: 3.5rem;
+    }
 
-    .navigation {
+    .nav {
       display: flex;
+      gap: 1.875rem;
+      text-transform: lowercase;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      font-weight: 700;
+      color: var(--color-nav-link);
     }
   }
 </style>
