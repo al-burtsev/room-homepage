@@ -6,6 +6,9 @@
   --color-nav-link: hsl(0, 100%, 100%);
 
   --content-offset: clamp(1.5rem, 6vw, 4rem);
+
+
+  interpolate-size: allow-keywords;
 }
 
 body {
