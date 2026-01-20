@@ -18,13 +18,7 @@ import MobileMenu from "../ui/MobileMenu.astro";
     ></button
   >
   <a class="logo-link" href="/" aria-label="Go to home page">
-    <img
-      class="logo"
-      src={logo.src}
-      width="62"
-      height="14"
-      alt="Room's logo"
-    />
+    <img class="logo" src={logo.src} width="62" height="14" alt="Room's logo" />
   </a>
 
   <MobileMenu>
@@ -69,6 +63,7 @@ import MobileMenu from "../ui/MobileMenu.astro";
   }
 
   .logo-link {
+    align-items: flex-start;
     margin-inline-start: 32%;
 
     &:focus-visible {
@@ -126,11 +121,6 @@ import MobileMenu from "../ui/MobileMenu.astro";
     .logo-link {
       margin-inline: 0;
       margin-inline-end: 3.5rem;
-    }
-
-    .nav {
-      display: flex;
-      gap: 1.875rem;
     }
 
     .nav-link {

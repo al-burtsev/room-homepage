@@ -58,12 +58,12 @@
         background-color: transparent;
       }
     }
+  }
 
-    &:not(:popover-open) {
-      display: none;
-      opacity: 0;
-      transform: translateY(-100%);
-    }
+  .menu:not(:popover-open) {
+    display: none;
+    opacity: 0;
+    transform: translateY(-100%);
   }
 
   .close-btn {
@@ -80,7 +80,7 @@
   }
 
   @media (width > 768px) {
-    .menu {
+    .menu:not(:popover-open) {
       display: contents;
     }
 
