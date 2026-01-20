@@ -5,6 +5,7 @@ import MobileMenu from "../ui/MobileMenu.astro";
 
 <header class="header">
   <button
+    type="button"
     class="burger"
     aria-expanded="false"
     aria-controls="mobile-menu"
@@ -55,8 +56,8 @@ import MobileMenu from "../ui/MobileMenu.astro";
     }
 
     &:focus-visible {
-      outline: 2px solid var(--color-accent);
-      outline-offset: 4px;
+      outline: 0.125rem solid var(--color-accent);
+      outline-offset: 0.25rem;
     }
 
     &:active {
@@ -69,8 +70,8 @@ import MobileMenu from "../ui/MobileMenu.astro";
     margin-inline-start: 32%;
 
     &:focus-visible {
-      outline: 2px solid var(--color-accent);
-      outline-offset: 4px;
+      outline: 0.125rem solid var(--color-accent);
+      outline-offset: 0.25rem;
     }
   }
 
@@ -91,9 +92,9 @@ import MobileMenu from "../ui/MobileMenu.astro";
     &::after {
       position: absolute;
       content: "";
-      bottom: -4px;
+      bottom: -0.25rem;
       width: 100%;
-      height: 2px;
+      height: 0.125rem;
       background-color: currentColor;
       scale: 0;
       transition: scale 0.3s ease-in;
@@ -104,12 +105,12 @@ import MobileMenu from "../ui/MobileMenu.astro";
     }
 
     &:focus-visible {
-      outline: 2px solid var(--color-accent);
-      outline-offset: 4px;
+      outline: 0.125rem solid var(--color-accent);
+      outline-offset: 0.25rem;
     }
   }
 
-  @media (width > 768px) {
+  @media (width > 48rem) {
     .header {
       width: fit-content;
       align-items: center;

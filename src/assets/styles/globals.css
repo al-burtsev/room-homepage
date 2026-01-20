@@ -20,7 +20,7 @@
 }
 
 body {
-  max-width: 1440px;
+  max-width: 90rem;
   margin-inline: auto;
   font-family: var(--font-main), sans-serif;
 }
@@ -45,11 +45,11 @@ body {
 .sr-only {
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
-  height: 1px;
+  height: 0.0625rem;
   overflow: hidden;
   position: absolute;
   white-space: nowrap;
-  width: 1px;
+  width: 0.0625rem;
 }
 
 .stop-transitions * {
@@ -60,12 +60,12 @@ body {
 .title {
   text-transform: uppercase;
   font-size: clamp(0.875rem, 2vw, 1.1rem);
-  letter-spacing: 6.2px;
+  letter-spacing: 0.3875rem;
 }
 
 .description {
   line-height: 1.4;
-  letter-spacing: -0.2px;
+  letter-spacing: -0.0125rem;
   color: var(--color-text-500);
 }
 

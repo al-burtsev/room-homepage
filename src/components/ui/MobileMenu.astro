@@ -1,5 +1,6 @@
-<div id="mobile-menu" class="menu" popover aria-label="mobile menu" >
+<div id="mobile-menu" class="menu" popover aria-label="mobile menu">
   <button
+    type="button"
     class="close-btn"
     popovertarget="mobile-menu"
     popovertargetaction="toggle"
@@ -70,8 +71,8 @@
     display: flex;
 
     &:focus-visible {
-      outline: 2px solid var(--color-accent);
-      outline-offset: 4px;
+      outline: 0.125rem solid var(--color-accent);
+      outline-offset: 0.25rem;
     }
 
     &:active {
@@ -79,7 +80,7 @@
     }
   }
 
-  @media (width > 768px) {
+  @media (width > 48rem) {
     .menu:not(:popover-open) {
       display: contents;
     }
