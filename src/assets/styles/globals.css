@@ -4,11 +4,19 @@
   --color-text-500: hsl(0, 0%, 63%);
   --color-text-800: hsl(0, 0%, 27%);
   --color-nav-link: hsl(0, 100%, 100%);
+  --color-accent: hsl(43, 74%, 49%);
+  --color-active: hsl(0, 100%, 100%);
 
-  --content-offset: clamp(1.5rem, 6vw, 4rem);
 
+  --header-offset: clamp(1.5rem, 6vw, 4rem);
+  --content-offset: clamp(2rem, 6vw, 4rem);
 
-  interpolate-size: allow-keywords;
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  color: var(--color-active);
+  background-color: var(--color-text-800);
 }
 
 body {
@@ -46,7 +54,7 @@ body {
 
 .title {
   text-transform: uppercase;
-  font-size: 1.1rem;
+  font-size: clamp(0.875rem, 2vw, 1.1rem);
   letter-spacing: 6.2px;
 }
 
@@ -54,4 +62,8 @@ body {
   line-height: 1.4;
   letter-spacing: -0.2px;
   color: var(--color-text-500);
+}
+
+.card {
+  padding-inline: var(--content-offset);
 }
