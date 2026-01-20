@@ -26,3 +26,16 @@ import favicon from "../../public/favicon.png";
 		height: 100%;
 	}
 </style>
+
+<script is:inline>
+	let resizeTimer;
+	window.addEventListener("resize", () => {
+		document.body.classList.add("stop-transitions");
+
+		clearTimeout(resizeTimer);
+
+		resizeTimer = setTimeout(() => {
+			document.body.classList.remove("stop-transitions");
+		}, 200);
+	});
+</script>
