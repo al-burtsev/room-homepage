@@ -3,6 +3,8 @@ import { defineConfig, fontProviders } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://al-burtsev.github.io',
+  base: '/room-homepage',
   experimental: {
     fonts: [
       {
