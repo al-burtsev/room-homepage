@@ -1,0 +1,307 @@
+---
+import { heroData } from "../../constants/heroData";
+import IconAngleLeft from "../../components/ui/IconAngleLeft.astro";
+import IconAngleRight from "../../components/ui/IconAngleRight.astro";
+---
+
+<section id="hero" class="section hero">
+  <h1 class="sr-only">Discover innovative ways to decorate</h1>
+
+  <div class="carousel" id="carousel-container">
+    <div class="carousel-track" id="carousel-track" tabindex="0">
+      {
+        heroData.map((item) => (
+          <div class="carousel-item">
+            <picture>
+              <source
+                media="(min-width: 500px)"
+                srcset={item.image.desktop}
+              />
+              <img
+                class="carousel-img"
+                src={item.image.mobile}
+                alt={item.alt}
+                width="375"
+                height="360"
+                draggable="false"
+                fetchpriority="high"
+              />
+            </picture>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="carousel-nav carousel-buttons">
+      <button class="carousel-button" id="prevBtn" aria-label="Previous slide"
+        ><IconAngleLeft /></button
+      >
+      <button class="carousel-button" id="nextBtn" aria-label="Next slide"
+        ><IconAngleRight /></button
+      >
+    </div>
+  </div>
+
+  <div class="card hero__card">
+    {
+      heroData.map((item, index) => (
+        <div
+          class:list={["card-content", { "is-active": index === 0 }]}
+          aria-live="polite"
+        >
+          <h2 class="hero__title">{item.title}</h2>
+          <p class="description hero__descr">{item.description}</p>
+          <a class="hero__link" href="#!">
+            Shop now{" "}
+            <svg width="40" height="12" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M34.05 0l5.481 5.527h.008v.008L40 6l-.461.465v.063l-.062-.001L34.049 12l-.662-.668 4.765-4.805H0v-1h38.206l-4.82-4.86L34.05 0z"
+                fill="#000"
+                fill-rule="nonzero"
+              />
+            </svg>
+          </a>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .hero__card {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding-block: 61px;
+  }
+
+  .hero__title {
+    line-height: 1;
+    font-size: clamp(38px, 4vw, 45px);
+  }
+
+  .hero__descr {
+    margin-block-end: 1.2rem;
+  }
+
+  .hero__link {
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: var(--color-text);
+    font-size: 1.1rem;
+    letter-spacing: 11px;
+    white-space: nowrap;
+    transform-origin: left;
+    transition:
+      color 0.4s,
+      transform 0.2s ease-out;
+
+    @media (any-hover: hover) {
+      &:hover {
+        color: var(--color-text-500);
+      }
+    }
+
+    &:focus-visible {
+      outline: transparent;
+      color: var(--color-accent);
+    }
+
+    &:active {
+      color: var(--color-accent);
+      transform: translateX(0.5rem);
+    }
+
+    & svg {
+      transition: transform 0.2s ease;
+    }
+
+    &:active svg {
+      transform: translateX(-1rem);
+    }
+  }
+
+  .carousel {
+    position: relative;
+    width: 100%;
+  }
+
+  .carousel-track {
+    display: flex;
+    height: 100%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch; /* Плавность на iOS */
+  }
+
+  .carousel-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .carousel-item {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+  }
+
+  .carousel-buttons {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: flex;
+  }
+
+  .carousel-img {
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .carousel-button {
+    display: flex;
+    align-items: center;
+    padding: 1rem 1.3rem;
+    color: var(--color-nav-link);
+    background-color: var(--color-text);
+    will-change: background-color;
+    transition: background-color 0.4s ease-out;
+
+    @media (any-hover: hover) {
+      &:hover {
+        background-color: var(--color-text-800);
+      }
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-accent);
+      outline-offset: -2px;
+    }
+
+    &:active {
+      background-color: var(--color-accent);
+    }
+  }
+
+  .card-content {
+    display: grid;
+    gap: 0.3rem;
+    grid-area: 1 / 1;
+
+    opacity: 0;
+    transform: translateX(1rem);
+    pointer-events: none;
+    transition:
+      opacity 0.5s ease-in,
+      transform 0.5s ease-in,
+      visibility 0.5s;
+    visibility: hidden;
+  }
+
+  .card-content.is-active {
+    opacity: 1;
+    transform: translateX(0);
+    visibility: visible;
+    pointer-events: all;
+    transition:
+      opacity 0.5s ease-out 0.2s,
+      transform 0.5s ease-out 0.2s;
+  }
+
+  @media (width > 768px) {
+    .hero {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+    }
+
+    .hero__card {
+      padding-block-start: clamp(32px, 8vw, 115px);
+      padding-block-end: 115px;
+      padding-inline: clamp(32px, 7vw, 100px);
+    }
+
+    .hero__title {
+      line-height: 1.1;
+    }
+
+    .hero__descr {
+      margin-block-end: 0;
+    }
+
+    .carousel-img {
+      height: 100%;
+      object-fit: cover;
+      object-position: left;
+
+      &:focus-visible {
+        outline: 2px solid var(--color-accent);
+        outline-offset: -2px;
+      }
+    }
+
+    .carousel-buttons {
+      right: -161px;
+    }
+
+    .carousel-button {
+      padding: 1.75rem 2.1rem;
+    }
+
+    .card-content {
+      gap: 1.1rem;
+      align-content: start;
+    }
+  }
+</style>
+
+<script>
+  const track = document.getElementById("carousel-track");
+  const nextBtn = document.getElementById("nextBtn");
+  const prevBtn = document.getElementById("prevBtn");
+  const textBlocks = document.querySelectorAll(".card-content");
+
+  let currentIndex = 0;
+  const total = textBlocks.length;
+
+  function changeSlide(newIndex: number) {
+    textBlocks[currentIndex].classList.remove("is-active");
+
+    currentIndex = newIndex;
+
+    textBlocks[currentIndex].classList.add("is-active");
+
+    const width = track?.clientWidth ?? 0;
+    track?.scrollTo({ left: width * currentIndex, behavior: "smooth" });
+  }
+
+  function updateText(newIndex: number) {
+    if (newIndex === currentIndex) return;
+
+    textBlocks[currentIndex].classList.remove("is-active");
+    textBlocks[newIndex].classList.add("is-active");
+    currentIndex = newIndex;
+  }
+
+  nextBtn?.addEventListener("click", () => {
+    const next = (currentIndex + 1) % total;
+    changeSlide(next);
+  });
+
+  prevBtn?.addEventListener("click", () => {
+    const prev = (currentIndex - 1 + total) % total;
+    changeSlide(prev);
+  });
+
+  track?.addEventListener(
+    "scroll",
+    () => {
+      const width = track.clientWidth;
+      const newIndex = Math.round(track.scrollLeft / width);
+
+      if (newIndex !== currentIndex) {
+        updateText(newIndex);
+      }
+    },
+    { passive: true },
+  );
+</script>

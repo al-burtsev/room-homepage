@@ -1,0 +1,140 @@
+---
+import logo from "../../assets/images/logo.svg";
+import MobileMenu from "../ui/MobileMenu.astro";
+---
+
+<header class="header">
+  <button
+    class="burger"
+    popovertarget="mobile-menu"
+    popovertargetaction="toggle"
+    aria-label="Open menu"
+  >
+    <svg width="20" height="14" xmlns="http://www.w3.org/2000/svg"
+      ><path
+        d="M20 12v2H0v-2h20zm0-6v2H0V6h20zm0-6v2H0V0h20z"
+        fill="#FFF"
+        fill-rule="evenodd"></path></svg
+    ></button
+  >
+  <a class="logo-link" href="/" aria-label="Go to home page">
+    <img
+      class="logo"
+      src={logo.src}
+      width="62"
+      height="14"
+      alt="Room's logo"
+    />
+  </a>
+
+  <MobileMenu>
+    <nav class="nav">
+      <a class="nav-link" href="#!">Home</a>
+      <a class="nav-link" href="#!">Shop</a>
+      <a class="nav-link" href="#!">About</a>
+      <a class="nav-link" href="#!">Contact</a>
+    </nav>
+  </MobileMenu>
+</header>
+
+<style>
+  .header {
+    position: absolute;
+    top: clamp(2.95rem, 6vw, 3.95rem);
+    z-index: 10;
+    width: 100%;
+    display: flex;
+    padding-inline-start: var(--header-offset);
+  }
+
+  .burger {
+    display: flex;
+    color: var(--color-nav-link);
+    transition: color 0.3s ease-out;
+
+    @media (any-hover: hover) {
+      &:hover {
+        color: var(--color-accent);
+      }
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-accent);
+      outline-offset: 4px;
+    }
+
+    &:active {
+      color: var(--color-accent);
+    }
+  }
+
+  .logo-link {
+    margin-inline-start: 32%;
+
+    &:focus-visible {
+      outline: 2px solid var(--color-accent);
+      outline-offset: 4px;
+    }
+  }
+
+  .nav {
+    display: flex;
+    gap: 1.875rem;
+    text-transform: lowercase;
+  }
+
+  .nav-link {
+    position: relative;
+
+    text-decoration: none;
+    line-height: normal;
+    font-weight: 700;
+    color: var(--color-text);
+
+    &::after {
+      position: absolute;
+      content: "";
+      bottom: -4px;
+      width: 100%;
+      height: 2px;
+      background-color: currentColor;
+      scale: 0;
+      transition: scale 0.3s ease-in;
+    }
+
+    &:hover::after {
+      scale: 1;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-accent);
+      outline-offset: 4px;
+    }
+  }
+
+  @media (width > 768px) {
+    .header {
+      width: fit-content;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .burger {
+      display: none;
+    }
+
+    .logo-link {
+      margin-inline: 0;
+      margin-inline-end: 3.5rem;
+    }
+
+    .nav {
+      display: flex;
+      gap: 1.875rem;
+    }
+
+    .nav-link {
+      color: var(--color-nav-link);
+    }
+  }
+</style>

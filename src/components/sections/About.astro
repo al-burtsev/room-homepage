@@ -1,0 +1,75 @@
+---
+import aboutDark from "../../assets/images/image-about-dark.jpg";
+import aboutLight from "../../assets/images/image-about-light.jpg";
+---
+
+<section id="about" class="section about">
+  <picture>
+    <img
+      class="about__img"
+      src={aboutDark.src}
+      width="420"
+      height="266"
+      draggable="false"
+      alt="A dark, cozy room interior accented with a modern armchair and soft lighting"
+    />
+  </picture>
+
+  <div class="card about__card">
+    <h2 class="title about__title">About our furniture</h2>
+    <p class="description">
+      Our multifunctional collection blends design and function to suit your
+      individual taste. Make each room unique, or pick a cohesive theme that
+      best express your interests and what inspires you. Find the furniture
+      pieces you need, from traditional to contemporary styles or anything in
+      between. Product specialists are available to help you create your dream
+      space.
+    </p>
+  </div>
+
+  <picture>
+    <img
+      class="about__img"
+      src={aboutLight.src}
+      width="440"
+      height="266"
+      draggable="false"
+      alt="A bright, minimalist room with a white table and modern decor elements"
+    />
+  </picture>
+</section>
+
+<style>
+  .about__card {
+    display: grid;
+    gap: 1rem;
+    padding-block: 50px 38px;
+  }
+
+  .about__img {
+    width: 100%;
+    object-fit: cover;
+  }
+
+  @media (width > 768px) {
+    .about {
+      display: grid;
+      grid-template-columns: auto clamp(420px, 40vw, 580px) auto;
+    }
+
+    .about__card {
+      align-content: start;
+      gap: 0;
+      padding: 3.875rem 2.9rem 1rem;
+    }
+
+    .about__title {
+      margin-block-end: 0.625rem;
+    }
+
+    .about__img {
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+</style>
