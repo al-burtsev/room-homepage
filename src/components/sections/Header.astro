@@ -6,6 +6,8 @@ import MobileMenu from "../ui/MobileMenu.astro";
 <header class="header">
   <button
     class="burger"
+    aria-expanded="false"
+    aria-controls="mobile-menu"
     popovertarget="mobile-menu"
     popovertargetaction="toggle"
     aria-label="Open menu"
@@ -128,3 +130,15 @@ import MobileMenu from "../ui/MobileMenu.astro";
     }
   }
 </style>
+
+<script>
+  const burger = document.querySelector(".burger");
+  const menu = document.querySelector("#mobile-menu");
+
+  if (burger && menu) {
+    menu.addEventListener("toggle", () => {
+      const isOpen = menu.checkVisibility();
+      burger.setAttribute("aria-expanded", isOpen.toString());
+    });
+  }
+</script>
